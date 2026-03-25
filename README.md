@@ -28,6 +28,7 @@ A modern web-based **Student Management System** built using **Flask, SQLite, HT
 
 ### 🏆 Leaderboard
 - Ranking based on performance
+- View all students sorted by score
 
 ---
 
@@ -47,24 +48,31 @@ cd student-management-system
 pip install flask
 python app.py
 
-🔑 Default Login
-Username: admin
-Password: admin
+## 🔑 Default Login
 
-📌 Future Improvements
-	•	Role-based authentication
-	•	Export data (CSV/PDF)
-	•	Cloud database (PostgreSQL)
-	•	API integration
-	•	Mobile responsiveness
+Username: admin  
+Password: admin  
 
-👨‍💻 Author
+---
 
-Aniket Zaveri
+## 📌 Future Improvements
 
-⸻
+- Role-based authentication  
+- Export data (CSV/PDF)  
+- Cloud database (PostgreSQL)  
+- API integration  
+- Mobile responsiveness  
 
-⭐ Support
+---
 
+## 👨‍💻 Author
+
+Aniket Zaveri  
+
+---
+
+## ⭐ Support
+
+If you like this project, give it a ⭐ on GitHub!
 If you like this project, give it a ⭐ on GitHub!
 
