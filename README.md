@@ -48,6 +48,9 @@ cd student-management-system
 pip install flask
 python app.py
 
+
+
+
 ## 🔑 Default Login
 
 Username: admin  
