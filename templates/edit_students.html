@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Manage Students</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+
+        <div class="top">
+            <h2><i class="ri-rocket-2-line"></i></h2>
+            <button onclick="toggleSidebar()" id="menuBtn">
+                <i class="ri-menu-line"></i>
+            </button>
+        </div>
+
+        <ul>
+            <li onclick="window.location.href='/dashboard'">
+                <i class="ri-home-5-line"></i><p>Dashboard</p>
+            </li>
+
+            <li onclick="window.location.href='/add'">
+                <i class="ri-add-line"></i><p>Add</p>
+            </li>
+
+            <li class="active">
+                <i class="ri-edit-line"></i><p>Edit</p>
+            </li>
+        </ul>
+
+        <div class="logout">
+            <a href="/logout">
+                <i class="ri-logout-box-r-line"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <h1 class="title">Manage Students ✏️</h1>
+        <div style="margin-bottom:20px;">
+            <input
+                 type="text"
+                 id="searchInput"
+                 placeholder="🔍 Search students..."
+                 style="
+                     width:100%;
+                     padding:12px;
+                     border-radius:10px;
+                     border:1px solid #ddd;
+                     outline:none;
+                "
+            >
+        </div>
+
+        <!-- TABLE CARD -->
+        <div class="card">
+
+            <table style="width:100%; border-collapse: collapse; table-layout: fixed;">
+
+                <tr style="text-align:left; color:gray;">
+                    <th style="width:40%;">Name</th>
+                    <th style="width:30%;">Email</th>
+                    <th style="width:15%; text-align:center; cursor:pointer;" onclick="sortTable()">
+                        Score ⬍
+                        </th>
+                    <th style="width:15%; text-align:center;">Actions</th>
+                </tr>
+
+                {% for s in students %}
+                <tr style="border-top:1px solid #eee;">
+                    <!-- NAME -->
+                     <td>
+                        <div style="display:flex; align-items:center; gap:12px;">
+
+                            <!-- AVATAR -->
+                            <div class="avatar {{ ['red','blue','pink','orange','teal'][loop.index0 % 5] }}"
+                                 style="width:40px; height:40px; font-size:14px; margin:0;">
+                                 {{ s.name[:2].upper() }}
+                            </div>
+
+                            <!-- NAME -->
+                            <div style="font-weight:600;">
+                                {{ s.name }}
+                            </div>
+
+                        </div>
+                     </td>
+                     <!-- EMAIL -->
+                     <td style="color:gray;">
+                        {{ s.email }}
+                     </td>
+
+                    <!-- SCORE -->
+                     <td style="text-align:center; font-weight:600;">
+                        {{ s.score }}
+                    </td>
+
+                    <!-- ACTIONS -->
+                     <td style="text-align:center;">
+                        <div class="action-group">
+
+                            <!-- EDIT -->
+                             <button class="icon-btn edit-btn" onclick="openEditModal('{{ s.id }}')">
+                                <i class="ri-pencil-line"></i>
+                                </button>
+
+                             <!-- DELETE -->
+                              <div class="delete-container" data-id="{{ s.id }}">
+
+                                <!-- NORMAL BUTTON -->
+                                 <button class="icon-btn delete-btn" title="Delete">
+                                    <i class="ri-delete-bin-line"></i>
+                                 </button>
+
+                                 <!-- CONFIRM -->
+                                  <div class="confirm-box">
+                                    <button class="yes">✓</button>
+                                    <button class="no">✕</button>
+                                  </div>
+                              </div>
+                        </div>
+                     </td>
+                </tr>
+                {% endfor %}
+
+            </table>
+            </div>
+            <div class="pagination-bar">
+                <span id="pageInfo" style="font-size:13px; color:#666;"></span>
+
+                <div class="rows-control">
+                    <label>Rows:</label>
+                    <select id="rowsSelect" onchange="changeRows(this.value)">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+
+                    </select>
+                </div>
+            </div>
+        <div id="pagination" style="margin-top:20px; text-align:center;"></div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+<!-- ✅ SUCCESS POPUP -->
+<div class="success-popup" id="successPopup">
+    <div class="success-box">
+        ✅ Student Updated Successfully!
+    </div>
+</div>
+
+<!-- ✅ STEP 3 SCRIPT -->
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (urlParams.get("success")) {
+        const popup = document.getElementById("successPopup");
+
+        if (popup) {
+            popup.classList.add("show");
+
+            setTimeout(() => {
+                popup.classList.remove("show");
+
+                // remove ?success=1 from URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }, 1500);
+        }
+    }
+});
+</script>
+
+<div class="modal" id="editModal">
+
+    <div id="editContent" style="
+        width:100%;
+        max-width:700px;
+        max-height:90vh;
+        overflow: hidden;
+        position:relative;
+        scroll-behavior:smooth;
+    ">
+
+        <!-- CLOSE BUTTON -->
+        <button onclick="closeEditModal()"
+            style="position:absolute; top:10px; right:10px; border:none; background:none; font-size:20px; opacity:0.7; cursor:pointer;">
+            ✖
+        </button>
+
+        Loading...
+
+    </div>
+
+</div>
+
+</body>
+</html>

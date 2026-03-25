@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}Analytics{% endblock %}
+
+{% block content %}
+
+<h2 class="title">📊 Analytics Dashboard</h2>
+
+<div class="cards">
+    <div class="card">
+        <h3>Total Students</h3>
+        <p>{{ total_students }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Avg Math</h3>
+        <p>{{ avg_math }}</p>
+        <small class="trend up">⬆ +5%</small>
+    </div>
+
+    <div class="card">
+        <h3>Avg Science</h3>
+        <p>{{ avg_science }}</p>
+        <small class="trend up">⬆ +5%</small>
+    </div>
+
+    <div class="card">
+        <h3>Avg English</h3>
+        <p>{{ avg_english }}</p>
+        <small class="trend up">⬆ +5%</small>
+    </div>
+</div>
+
+<div class="cards">
+    <div class="card">
+        <h3>🏆 Top Student</h3>
+        <p>{{ top_student[0] if top_student else "N/A" }}</p>
+    </div>
+
+    <div class="card">
+        <h3>⚠️ Lowest Student</h3>
+        <p>{{ low_student[0] if low_student else "N/A" }}</p>
+    </div>
+</div>
+
+<!-- 🔥 CHART FIX -->
+<div class="analytics-grid">
+
+    <div class="card" style="flex:1; height:350px;">
+        <h3>Subject Average</h3>
+        <canvas id="subjectChart"></canvas>
+    </div>
+
+    <div class="card" style="flex:1; height:350px;">
+        <h3>Gender Distribution</h3>
+        <canvas id="genderChart" style="max-height:300px;"></canvas>
+    </div>
+
+    <div class="card insights-card">
+        <h3>Insights</h3>
+        
+        <div class="insight">
+            <span class="icon">📈</span>
+            <p>Science is highest scoring subject</p>
+        </div>
+
+        <div class="insight">
+            <span class="icon">📉</span>
+            <p>Math needs improvement</p>
+        </div>
+
+        <div class="insight">
+            <span class="icon">👦</span>
+            <p>Male students slightly higher</p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+const subjectData = JSON.parse('{{ [avg_math, avg_science, avg_english] | tojson | safe }}');
+const genderLabels = JSON.parse('{{ gender_labels | tojson | safe }}');
+const genderCounts = JSON.parse('{{ gender_counts | tojson | safe }}');
+
+new Chart(document.getElementById('subjectChart'), {
+    type: 'bar',
+    data: {
+        labels: ['Math','Science','English'],
+        datasets: [{
+            label: 'Average Score',
+            data: subjectData,
+            backgroundColor: [
+                'rgba(99,102,241,0.7)',
+                'rgba(139,92,246,0.7)',
+                'rgba(168,85,247,0.7)'
+            ],
+            borderRadius: 10
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: {
+            duration: 1200,
+            easing: 'easeOutQuart'
+        },
+        plugins: {
+            legend: { display: false }
+        }
+    }
+});
+
+new Chart(document.getElementById('genderChart'), {
+    type: 'doughnut',
+    data: {
+        labels: genderLabels,
+        datasets: [{
+            data: genderCounts,
+            backgroundColor: [
+                '#3b82f6',
+                '#ef4444'
+            ],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        cutout: '65%',
+        animation: {
+            animateRotate: true,
+            duration: 1200
+        }
+    }
+});
+</script>
+
+{% endblock %}

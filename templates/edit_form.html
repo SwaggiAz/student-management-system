@@ -1,0 +1,161 @@
+<div style="width:100%; max-width:700px; margin:auto;">
+<div class="form-card" style="box-shadow:none;">
+
+    <!-- BACK -->
+     <div class="form-header">
+        <h2>Edit Student</h2>
+        <a href="#" onclick="closeEditModal()" class="back-slice">Back</a>
+   </div>
+
+    <!-- ✅ SUCCESS POPUP -->
+     <div class="success-popup" id="successPopup">
+        <div class="success-box">
+            ✅ Student Updated Successfully!
+        </div>
+     </div>
+
+    <form method="POST" action="/edit-students/{{ student.id }}" id="editForm" class="modern-form">
+
+        <!-- 🔹 PERSONAL DETAILS -->
+         <div class="form-section">
+            <h3>👤 Personal Details</h3>
+
+            <div class="grid">
+                <div class="coolinput">
+                    <input type="text" name="name" value="{{ student.name }}" placeholder=" " required>
+                    <label>Name</label>
+                    <span class="error-text">Name is required</span>
+                </div>
+
+                <div class="coolinput">
+                    <select name="gender" required>
+                        <option value=""></option>
+                        <option value="male" {% if student.gender=='male' %}selected{% endif %}>Male</option>
+                        <option value="female" {% if student.gender=='female' %}selected{% endif %}>Female</option>
+                        <option value="agender" {% if student.gender=='agender' %}selected{% endif %}>agender</option>
+                        <option value="genderfluid" {% if student.gender=='genderfluid' %}selected{% endif %}>genderfluid</option>
+                        <option value="bigender" {% if student.gender=='bigender' %}selected{% endif %}>bigender</option>
+                        <option value="pangender" {% if student.gender=='pangender' %}selected{% endif %}>pangender</option>
+                        <option value="Two-Spirit" {% if student.gender=='Two-Spirit' %}selected{% endif %}>Two-Spirit</option>
+                    </select>
+                    <label>Gender</label>
+                </div>
+
+                <div class="coolinput">
+                    <input type="email" name="email" value="{{ student.email }}" placeholder=" ">
+                    <label>Email</label>
+                    <span class="error-text">Invalid email</span>
+                </div>
+
+                <div class="coolinput">
+                    <input type="text" name="phone" value="{{ student.phone }}" placeholder=" ">
+                    <label>Phone</label>
+                    <span class="error-text">Enter valid number</span>
+                </div>
+
+                <div class="coolinput">
+                    <input type="text" name="address" value="{{ student.address }}" placeholder=" ">
+                    <label>Address</label>
+                </div>
+
+               <div class="coolinput">
+                   <input type="date" name="dob" value="{{ student.dob }}" placeholder=" ">
+                   <label>Date of Birth</label>
+                </div>
+
+            </div>
+         </div>
+         <!-- 🔹 ACADEMIC DETAILS -->
+        <div class="form-section">
+            <h3>🎓 Academic Details</h3>
+
+            <div class="grid">
+                <div class="coolinput">
+                    <input type="text" name="degree" value="{{ student.degree }}" placeholder=" ">
+                    <label>Degree</label>
+                </div>
+
+                <div class="coolinput">
+                    <input type="date" name="admission_date" value="{{ student.admission_date }}" placeholder=" ">
+                    <label>Admission Date</label>
+                </div>
+            </div>
+            </div>
+
+         <!-- 🔹 SUBJECT SCORES -->
+        <div class="form-section">
+            <h3>📊 Subject Scores</h3>
+
+            <div class="grid">
+                <div class="coolinput">
+                    <input type="number" name="math" value="{{ student.math }}" placeholder=" ">
+                    <label>Math</label>
+                    <span class="error-text">0–100 only</span>
+                </div>
+
+                <div class="coolinput">
+                    <input type="number" name="science" value="{{ student.science }}" placeholder=" ">
+                    <label>Science</label>
+                    <span class="error-text">0–100 only</span>
+                </div>
+
+                <div class="coolinput">
+                    <input type="number" name="english" value="{{ student.english }}" placeholder=" ">
+                    <label>English</label>
+                    <span class="error-text">0–100 only</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="button" class="cancel-btn" onclick="closeEditModal()">Cancel</button>
+            <button type="submit" id="updateBtn" class="submit-btn">
+                Update
+            </button>
+        </div>
+
+    </form>
+
+<!-- 🔥 CONFIRM MODAL -->
+<div class="confirm-overlay" id="confirmModal">
+
+    <div class="confirm-card">
+
+        <div class="confirm-head">
+            ⚡ Update Student
+        </div>
+
+        <div class="confirm-content">
+            Are you sure you want to save changes?
+        </div>
+
+        <div class="confirm-actions">
+            <button class="neo-btn cancel" onclick="closeConfirm()">Cancel</button>
+            <button class="neo-btn confirm" onclick="submitForm()">Yes Update</button>
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+</div>
+
+<script>
+/* ✅ SUCCESS POPUP AUTO SHOW */
+window.addEventListener("DOMContentLoaded", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (urlParams.get("success")) {
+        const popup = document.getElementById("successPopup");
+
+        if (popup) {
+            popup.classList.add("show");
+
+            // auto close after 2 sec
+            setTimeout(() => {
+                popup.classList.remove("show");
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }, 2000);
+        }
+    }
+});

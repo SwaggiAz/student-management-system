@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+<meta charset="UTF-8">
+<title>{% block title %}{% endblock %}</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+
+        <div class="top">
+
+            <!-- LEFT: MENU -->
+            <label class="menu-toggle">
+                <input type="checkbox" onclick="toggleSidebar()">
+                <div class="wrapper">
+                    <div class="row">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="row row-bottom">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+            </label>
+
+             <label class="switch">
+                <input type="checkbox" id="themeToggle">
+                <span class="slider">
+                    <span class="star star_1"></span>
+                    <span class="star star_2"></span>
+                    <span class="star star_3"></span>
+                    <svg viewBox="0 0 64 64" class="cloud">
+                        <path d="M20 50h24a10 10 0 0 0 0-20 14 14 0 0 0-27-3A10 10 0 0 0 20 50z" fill="#fff"/>
+                    </svg>
+                </span>
+             </label>
+        </div>
+
+        <ul>
+            <li class="{% if request.path == '/dashboard' %}active{% endif %}" onclick="window.location.href='/dashboard'">
+                <i class="ri-home-2-line"></i>
+                <p>Dashboard</p>
+            </li>
+            <li class="{% if request.path == '/add' %}active{% endif %}" onclick="window.location.href='/add'">
+                <i class="ri-add-line"></i>
+                <p>Add</p>
+            </li>
+            <li class="{% if request.path == '/edit' %}active{% endif %}" onclick="window.location.href='/edit'">
+                <i class="ri-edit-line"></i>
+                <p>Edit</p>
+            </li>
+            <li class="{% if request.path == '/analytics' %}active{% endif %}" onclick="window.location.href='/analytics'">
+                <i class="ri-bar-chart-line"></i>
+                <p>Analytics</p>
+            </li>
+            <li>
+                <i class="ri-trophy-line"></i>
+                <p>Leaderboard</p>
+            </li>
+            <li>
+               <i class="ri-user-line"></i>
+               <p>Profile</p>
+            </li>
+        </ul>
+
+        <div class="logout">
+            <a href="/logout">
+                <i class="ri-logout-box-line"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+        {% block content %}{% endblock %}
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
