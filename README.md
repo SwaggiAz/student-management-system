@@ -46,4 +46,4 @@ A modern web-based **Student Management System** built using **Flask, SQLite, HT
 git clone https://github.com/SwaggiAz/student-management-system.git
 cd student-management-system
 pip install flask
-python app.py
+python app.py```
