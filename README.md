@@ -42,10 +42,63 @@ A modern web-based **Student Management System** built using **Flask, SQLite, HT
 
 ## ⚙️ Setup
 
-```bash
-git clone https://github.com/SwaggiAz/student-management-system.git
-cd student-management-system
-pip install flask
-python app.py
+1. Clone the repository  
+   git clone https://github.com/SwaggiAz/student-management-system.git  
+
+2. Open project folder  
+   cd student-management-system  
+
+3. Install dependencies  
+   pip install flask  
+
+4. Run the app  
+   python app.py
 
 ---
+
+## 🔐 Default Login
+
+Username: admin  
+Password: admin  
+
+---
+
+## 📂 Project Structure
+
+student-management-system/  
+│── static/  
+│   ├── style.css  
+│   ├── script.js  
+│   └── images/  
+
+│── templates/  
+│   ├── dashboard.html  
+│   ├── add.html  
+│   ├── edit.html  
+│   └── analytics.html  
+
+│── app.py  
+│── database.db  
+│── README.md  
+
+---
+
+## 📌 Future Improvements
+
+- 🔐 Role-based authentication  
+- 📤 Export data (CSV / PDF)  
+- ☁️ Cloud database (PostgreSQL)  
+- 🔗 API integration  
+- 📱 Mobile responsiveness  
+
+---
+
+## 👨‍💻 Author
+
+Aniket Zaveri
+
+---
+
+## ⭐ Support
+
+If you like this project, give it a ⭐ on GitHu
