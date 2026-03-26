@@ -48,19 +48,19 @@ cd student-management-system
 pip install flask
 python app.py
 
-(```) 🔑 Default Login
+## 🔑 Default Login
 
 Username: admin
 Password: admin
 
-📌 Future Improvements
+## 📌 Future Improvements
 	•	Role-based authentication
 	•	Export data (CSV/PDF)
 	•	Cloud database (PostgreSQL)
 	•	API integration
 	•	Mobile responsiveness
 
-👨‍💻 Author
+## 👨‍💻 Author
 
 Aniket Zaveri
 
