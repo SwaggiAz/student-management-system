@@ -1,3 +1,5 @@
+# 🎓 Student Management System
+
 <p align="center">
   <img src="https://img.shields.io/badge/Flask-Python-blue?style=for-the-badge&logo=flask">
   <img src="https://img.shields.io/badge/Frontend-HTML%20CSS%20JS-orange?style=for-the-badge">
@@ -9,68 +11,54 @@
   🚀 A modern dashboard to manage students, track performance, and visualize analytics.
 </p>
 
-# 🎓 Student Management System
+---
 
-A modern web-based **Student Management System** built using **Flask, SQLite, HTML, CSS, and JavaScript**.
+## ✨ Features
+
+- 📊 Interactive Dashboard  
+- ➕ Add / Edit Students  
+- 🏆 Leaderboard Ranking  
+- 📈 Analytics with Charts  
+- 👤 Profile Management  
+- 🌙 Dark Mode  
+- 🎨 Smooth UI Animations  
 
 ---
 
-## 🚀 Features
+## 🖼️ Preview
 
-### 🔐 Authentication
-- Admin login system  
-- Session-based access control  
+### 🏠 Dashboard
+![Dashboard](screenshots/dashboard.png)
 
-### 📊 Dashboard
-- Total students, average score, top score  
-- Performance overview with progress bars  
-- Top students display  
+### ➕ Add Student
+![Add](screenshots/add.png)
 
-### 👨‍🎓 Student Management
-- Add new students  
-- Edit student details  
-- Delete students  
-- Prevent duplicate entries  
-
-### 📈 Analytics
-- Subject-wise averages  
-- Top & lowest student  
-- Gender distribution charts  
-
-### 🏆 Leaderboard
-- Ranking based on performance  
-- View all students sorted by score  
+### 📊 Analytics
+![Analytics](screenshots/analytics.png)
 
 ---
 
 ## 🛠️ Tech Stack
 
-- Flask (Python)  
-- SQLite  
-- HTML, CSS, JavaScript  
+- ⚙️ Flask (Python)  
+- 🗄️ SQLite  
+- 🎨 HTML, CSS, JavaScript  
 
 ---
 
 ## ⚙️ Setup
 
-1. Clone the repository  
-   git clone https://github.com/SwaggiAz/student-management-system.git  
-
-2. Open project folder  
-   cd student-management-system  
-
-3. Install dependencies  
-   pip install flask  
-
-4. Run the app  
-   python app.py
+git clone https://github.com/SwaggiAz/student-management-system.git  
+cd student-management-system  
+pip install flask  
+python app.py  
 
 ---
 
 ## 🔐 Default Login
 
-Username: admin  
-Password: admin  
+**Username:** admin  
+**Password:** admin  
 
 ---
 
@@ -96,22 +84,22 @@ student-management-system/
 
 ---
 
-## 📌 Future Improvements
+## 🚀 Future Improvements
 
 - 🔐 Role-based authentication  
 - 📤 Export data (CSV / PDF)  
-- ☁️ Cloud database (PostgreSQL)  
-- 🔗 API integration  
+- ☁️ PostgreSQL integration  
+- 🔗 API support  
 - 📱 Mobile responsiveness  
 
 ---
 
 ## 👨‍💻 Author
 
-Aniket Zaveri
+**Aniket Zaveri**
 
 ---
 
 ## ⭐ Support
 
-If you like this project, give it a ⭐ on GitHu
+If you like this project, give it a ⭐ on GitHub!
