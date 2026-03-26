@@ -48,4 +48,4 @@ cd student-management-system
 pip install flask
 python app.py
 
-:::
+```
