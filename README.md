@@ -65,6 +65,7 @@ Password: admin
 
 ## 📂 Project Structure
 
+```
 student-management-system/
 ├── static/
 │   ├── style.css
@@ -79,7 +80,8 @@ student-management-system/
 
 ├── app.py
 ├── database.db
-└── README.md 
+└── README.md
+```
 
 ---
 
