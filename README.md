@@ -1,3 +1,14 @@
+<p align="center">
+  <img src="https://img.shields.io/badge/Flask-Python-blue?style=for-the-badge&logo=flask">
+  <img src="https://img.shields.io/badge/Frontend-HTML%20CSS%20JS-orange?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Database-SQLite-green?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge">
+</p>
+
+<p align="center">
+  🚀 A modern dashboard to manage students, track performance, and visualize analytics.
+</p>
+
 # 🎓 Student Management System
 
 A modern web-based **Student Management System** built using **Flask, SQLite, HTML, CSS, and JavaScript**.
