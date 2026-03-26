@@ -65,21 +65,21 @@ Password: admin
 
 ## 📂 Project Structure
 
-student-management-system/  
-│── static/  
-│   ├── style.css  
-│   ├── script.js  
-│   └── images/  
+student-management-system/
+├── static/
+│   ├── style.css
+│   ├── script.js
+│   └── images/
 
-│── templates/  
-│   ├── dashboard.html  
-│   ├── add.html  
-│   ├── edit.html  
-│   └── analytics.html  
+├── templates/
+│   ├── dashboard.html
+│   ├── add.html
+│   ├── edit.html
+│   └── analytics.html
 
-│── app.py  
-│── database.db  
-│── README.md  
+├── app.py
+├── database.db
+└── README.md 
 
 ---
 
