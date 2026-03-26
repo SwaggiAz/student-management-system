@@ -47,27 +47,3 @@ git clone https://github.com/SwaggiAz/student-management-system.git
 cd student-management-system
 pip install flask
 python app.py
-
-## 🔑 Default Login
-
-Username: admin
-Password: admin
-
-## 📌 Future Improvements
-	•	Role-based authentication
-	•	Export data (CSV/PDF)
-	•	Cloud database (PostgreSQL)
-	•	API integration
-	•	Mobile responsiveness
-
-## 👨‍💻 Author
-
-Aniket Zaveri
-
-⸻
-
-⭐ Support
-
-If you like this project, give it a ⭐ on GitHub!
-
-
